@@ -35,9 +35,11 @@ body {
   /*opacity: 0.90;*/
 }
 .card p {display: block;}
-/*.axis--y path, .tick line {
+.axis {font-size: 13px;}
+.axis--y path, 
+.axis--y .tick line {
   display: none;
-}*/
+}
 
 /*.toolTip {
   position: absolute;
