@@ -22,17 +22,24 @@ body {
 	font-family: Helvetica, sans-serif;
 }
 
-/*.card {
-	text-align: center;
-	width: 800px;
-	margin: 0 auto;
-	padding-top: 20px;
-	background-color: white;
-  border-radius: 10px;
-  opacity: 0.90;
-}
+.chart {background-color: lightblue}
 
-.toolTip {
+.card {
+	text-align: center;
+	width: 1250px;
+	height: 670px;
+	margin: 0 auto;
+	padding-top: 10px;
+	background-color: white;
+  /*border-radius: 10px;*/
+  /*opacity: 0.90;*/
+}
+.card p {display: block;}
+/*.axis--y path, .tick line {
+  display: none;
+}*/
+
+/*.toolTip {
   position: absolute;
   text-align: center;
   width: auto;
@@ -44,13 +51,13 @@ body {
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
   background-color: lightgreen;
   opacity: 0;
-}
+}*/
 
-.tip-note {
+/*.tip-note {
 	max-width: 200px; 
 	margin: 15px auto 0 auto;
-}
-.axis {font-size: 12px;}
+}*/
+/*.axis {font-size: 12px;}
 
 .notes {
 	width: 800px;
@@ -62,9 +69,9 @@ body {
   display: flex;
   flex-flow: row nowrap;
   justify-content: space-around;
-}
+}*/
 
-.notes a {
+/*.notes a {
 	display: inline-block;
-}
-*/
+}*/
+
