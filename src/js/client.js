@@ -26,15 +26,16 @@ axios.get(URL)
     var x = d3.scaleLinear().range([0, width])
         .domain([minYear, maxYear])
 
-    var y = d3.scaleLinear().range([0, height])
-        .domain([0, d3.max(data, function(d) { return d.month })])
+    var y = d3.scaleBand().range([0, height])
+        .domain(data.map(function(d) { return (d.month-1) }))
 
     var g = chart.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
+    /*Appending a x axis*/
     g.append("g")
       .attr("class", "axis axis--x")
-      .attr("transform", "translate(0," + (height + 0) + ")")
+      .attr("transform", "translate(0," + (height + 1) + ")")
       .call(d3.axisBottom(x).ticks(26).tickFormat(d3.format("")))
     .append("text")
       .attr("x", (width/2))
@@ -44,8 +45,10 @@ axios.get(URL)
       .style("font-size", "18px")
       .text("Years")
 
+    /*Appending a y axis*/
     g.append("g")
       .attr("class", "axis axis--y")
+      .attr("transform", "translate(-1, 0)")
       .call(d3.axisLeft(y).ticks(12).tickFormat(function(d, i) { return months[i] }))
     .append("text")
       .attr("transform", "rotate(-90)")
@@ -57,6 +60,25 @@ axios.get(URL)
       .style("font-size", "18px")
       .text("Months")
 
+    var cards = g.selectAll(".temp")
+        .data(data)
+
+    cards.enter().append("rect")
+        .attr("x", function(d) { return x(d.year) })
+        .attr("y", function(d) { return y(d.month-1) })
+        .attr("class", "temp")
+        .attr("width", 5)
+        .attr("height", y.bandwidth()+1)
+        .style("fill", colors[0])
+
+    // var colorScale = d3.scaleQuantile()
+    //     .domain([baseTemp, colors.length - 1, d3.max(data, function(d) { return d.variance })])
+    //     .range(colors)
+
+    // cards.transition().duration(1000)
+    //   .style("fill", function(d) {return colorScale(d.variance) })
+
+    // cards.exit().remove()
 
   })
   .catch(function (error) {

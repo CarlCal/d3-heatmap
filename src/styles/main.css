@@ -22,8 +22,9 @@ body {
 	font-family: Helvetica, sans-serif;
 }
 
-.chart {background-color: lightblue}
+.chart {background-color: lightblue;}
 
+/**/
 .card {
 	text-align: center;
 	width: 1250px;
@@ -36,10 +37,11 @@ body {
 }
 .card p {display: block;}
 .axis {font-size: 13px;}
-.axis--y path, 
+/*.axis--y path, 
 .axis--y .tick line {
   display: none;
-}
+}*/
+.temp {border: 1px solid green;}
 
 /*.toolTip {
   position: absolute;
