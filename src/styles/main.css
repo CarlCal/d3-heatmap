@@ -24,7 +24,6 @@ body {
 
 .chart {background-color: lightblue;}
 
-/**/
 .card {
 	text-align: center;
 	width: 1250px;
@@ -37,11 +36,12 @@ body {
 }
 .card p {display: block;}
 .axis {font-size: 13px;}
-/*.axis--y path, 
+
+.axis--y path, 
 .axis--y .tick line {
   display: none;
-}*/
-.temp {border: 1px solid green;}
+}
+
 
 /*.toolTip {
   position: absolute;
@@ -57,25 +57,5 @@ body {
   opacity: 0;
 }*/
 
-/*.tip-note {
-	max-width: 200px; 
-	margin: 15px auto 0 auto;
-}*/
-/*.axis {font-size: 12px;}
 
-.notes {
-	width: 800px;
-	margin: 20px auto 20px auto;
-	padding: 20px;
-	background-color: white;
-  border-radius: 10px;
-  opacity: 0.90;
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: space-around;
-}*/
-
-/*.notes a {
-	display: inline-block;
-}*/
 
