@@ -31,6 +31,8 @@ axios.get(URL)
     var y = d3.scaleBand().range([0, height])
         .domain(data.map(function(d) { return (d.month - 1) }))
 
+    var tooltip = d3.select(".card").append("div").attr("class", "toolTip")
+
     var g = chart.append("g")
       .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
@@ -68,7 +70,8 @@ axios.get(URL)
 
     var totalTemp = data.map(function(d) { return baseTemp + d.variance })
 
-    var formatLabel = d3.format("0.2f")
+    var formatLabel = d3.format(".1f")
+    var formatTip = d3.format(".3f")
 
     var colorScale = d3.scaleQuantile()
       .domain([d3.min(totalTemp), d3.max(totalTemp)])
@@ -86,6 +89,19 @@ axios.get(URL)
         .attr("width", 5)
         .attr("height", y.bandwidth() + 1)
         .style("fill", function(d) { return colorScale(baseTemp+d.variance)})
+        .on("mouseover", function(d) {
+          tooltip.html(`
+            <div>
+              <p><strong>${d.year} - ${months[d.month-1]}</strong></p>
+              <p><strong>${formatTip(d.variance+baseTemp)} °C</strong></p>
+              <p>${formatTip(d.variance)} °C</p>
+            </div>
+          `)
+          .style("opacity", "0.9")
+          .style("left", (d3.event.pageX-60) + "px")
+          .style("top", (d3.event.pageY-70) + "px")
+        })
+        .on("mouseout", function() { tooltip.style("opacity", "0") })
 
     cards.exit().remove()
 
@@ -111,12 +127,9 @@ axios.get(URL)
         .attr("fill", "black")
         .attr("text-anchor", "center")
         .style("font-size", "14px")
-        .text(function(d) { return formatLabel(d) })
+        .text(function(d) { return (((formatLabel(d)*10)%10) === 0) ? Math.round(d) : formatLabel(d) })
 
     legend.exit().remove()
-
-
-    /*TOOL TIP*/
 
   })
   .catch(function (error) {

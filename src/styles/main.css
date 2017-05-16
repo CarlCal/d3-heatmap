@@ -5,24 +5,25 @@
 	box-sizing: border-box;
 }
 
-body {
-/*	background: rgba(181,255,183,1);
-	background: -moz-linear-gradient(45deg, rgba(181,255,183,1) 0%, rgba(17,222,48,1) 100%);
-	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(181,255,183,1)), color-stop(100%, rgba(17,222,48,1)));
-	background: -webkit-linear-gradient(45deg, rgba(181,255,183,1) 0%, rgba(17,222,48,1) 100%);
-	background: -o-linear-gradient(45deg, rgba(181,255,183,1) 0%, rgba(17,222,48,1) 100%);
-	background: -ms-linear-gradient(45deg, rgba(181,255,183,1) 0%, rgba(17,222,48,1) 100%);
-	background: linear-gradient(45deg, rgba(181,255,183,1) 0%, rgba(17,222,48,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#b5ffb7', endColorstr='#11de30', GradientType=1 );
+body, html {
+	background: rgba(255,186,186,1);
+	background: -moz-linear-gradient(45deg, rgba(255,186,186,1) 0%, rgba(222,17,17,1) 100%);
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(255,186,186,1)), color-stop(100%, rgba(222,17,17,1)));
+	background: -webkit-linear-gradient(45deg, rgba(255,186,186,1) 0%, rgba(222,17,17,1) 100%);
+	background: -o-linear-gradient(45deg, rgba(255,186,186,1) 0%, rgba(222,17,17,1) 100%);
+	background: -ms-linear-gradient(45deg, rgba(255,186,186,1) 0%, rgba(222,17,17,1) 100%);
+	background: linear-gradient(45deg, rgba(255,186,186,1) 0%, rgba(222,17,17,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffbaba', endColorstr='#de1111', GradientType=1 );
 	background-repeat: no-repeat;
-  background-attachment: fixed;*/
+  background-attachment: fixed;
   background-color: grey;
-  padding: 40px;
 	height: 100%;
 	font-family: Helvetica, sans-serif;
 }
 
-.chart {background-color: lightblue;}
+body {padding: 40px;}
+h1 {font-size: 32px;}
+h2 {font-size: 22px;}
 
 .card {
 	text-align: center;
@@ -31,31 +32,38 @@ body {
 	margin: 0 auto;
 	padding-top: 10px;
 	background-color: white;
-  /*border-radius: 10px;*/
-  /*opacity: 0.90;*/
+  border-radius: 10px;
+  opacity: 0.90;
 }
-.card p {display: block;}
+
+.temp {cursor: pointer;}
+
+.card p:first-of-type {
+	margin-top: 5px;
+	font-size: 14px;
+	display: block;
+}
+
 .axis {font-size: 13px;}
-
 .axis--y path, 
-.axis--y .tick line {
-  display: none;
-}
+.axis--y .tick line {display: none;}
 
-
-/*.toolTip {
+.toolTip {
   position: absolute;
   text-align: center;
   width: auto;
   height: auto;
+  font-size: 15px;
   padding: 3px 5px 3px 5px;
-  font-size: 16px;
   border-radius: 5px;
   pointer-events: none;
   box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.2);
-  background-color: lightgreen;
+  background-color: lightcoral;
   opacity: 0;
-}*/
+  white-space: nowrap;
+}
 
+.toolTip div p:first-child {font-size: 16px;}
+.toolTip div p:last-child {font-size: 13px; margin-top: 3px;}
 
 
