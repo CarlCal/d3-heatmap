@@ -55,6 +55,7 @@ module.exports = {
       title: htmlTitle,
       template: "index.ejs",
       hash: true,
+      inject: 'head'
     }),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin()
@@ -68,6 +69,7 @@ module.exports = {
         collapseWhitespace: true
       },
       hash: true,
+      inject: 'head'
     }),
     new ExtractTextPlugin({
       filename: "main.css",
