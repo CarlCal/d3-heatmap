@@ -1,5 +1,5 @@
 
-import "../styles/main.css"
+import "../styles/main.sass"
 
 import * as d3 from "d3"
 import axios from "axios"
@@ -11,26 +11,32 @@ const URL = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData
 axios.get(URL)
   .then(function (response) {
 
+    /*Defining the data*/
     var data = response.data.monthlyVariance,
         baseTemp = response.data.baseTemperature
 
+    /*Defining the sizes given a margin*/
     const margin = { top: 10, right: 10, bottom: 90, left: 90 },
           width = 1200 - margin.left - margin.right,
           height = 550 - margin.top - margin.bottom,
           legendWidth = 40,
           legendHeight = 20
 
+    /*Selecting the svg element*/
     var chart = d3.select(".chart")
 
     var minYear = d3.min(data, function(d) { return d.year }),
         maxYear = d3.max(data, function(d) { return d.year })
 
+    /*Defining a a domain and range for x-axis*/
     var x = d3.scaleLinear().range([0, width])
         .domain([minYear, maxYear])
 
+    /*Defining a a domain and range for y-axis*/
     var y = d3.scaleBand().range([0, height])
         .domain(data.map(function(d) { return (d.month - 1) }))
 
+    /*Append a div as tooltip*/
     var tooltip = d3.select(".card").append("div").attr("class", "toolTip")
 
     var g = chart.append("g")
@@ -68,15 +74,18 @@ axios.get(URL)
 
     yAxis.exit().remove()
 
+    /*Map the totalTemp to a new array*/
     var totalTemp = data.map(function(d) { return baseTemp + d.variance })
 
     var formatLabel = d3.format(".1f")
     var formatTip = d3.format(".3f")
 
+    /*Define the colosScale based on the totalTemp*/
     var colorScale = d3.scaleQuantile()
       .domain([d3.min(totalTemp), d3.max(totalTemp)])
       .range(colors)
     
+    /*Append the data card with appropriate color*/
     var cards = g.append("g")
         .attr("class", "cards")
       .selectAll(".temp")
@@ -105,6 +114,7 @@ axios.get(URL)
 
     cards.exit().remove()
 
+    /*Append the legend symbol and text*/
     var legend = g.append("g")
         .attr("class", "legendSpectrum")
       .selectAll(".legend")
@@ -133,5 +143,5 @@ axios.get(URL)
 
   })
   .catch(function (error) {
-   console.error(error);
-  });
+   console.error(error)
+  })

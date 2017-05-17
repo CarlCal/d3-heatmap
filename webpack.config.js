@@ -6,10 +6,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require("extract-text-webpack-plugin")
 
 const debug = process.env.NODE_ENV !== "production"
-const cssDev = ['style-loader', 'css-loader']
+const cssDev = ['style-loader', 'css-loader', 'sass-loader']
 const cssProd = ExtractTextPlugin.extract({
       fallback: "style-loader",
-      use: ["css-loader"],
+      use: ["css-loader", "sass-loader"],
       publicPath: "/build"
     })
 const cssConfig = debug ? cssDev : cssProd
@@ -33,7 +33,7 @@ module.exports = {
         }
       },
       { 
-        test: /\.css$/,
+        test: /\.sass$/,
         use: cssConfig
       }
     ]

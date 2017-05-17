@@ -1,0 +1,75 @@
+
+*
+	margin: 0
+	padding: 0
+	box-sizing: border-box
+
+$light-gradient: #ffbaba
+$dark-gradient: #de1111
+
+@mixin gradient($light, $dark)
+	background: rgba($light,1)
+	background: -moz-linear-gradient(45deg, rgba($light,1) 0%, rgba($dark,1) 100%)
+	background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba($light,1)), color-stop(100%, rgba($dark,1)))
+	background: -webkit-linear-gradient(45deg, rgba($light,1) 0%, rgba($dark,1) 100%)
+	background: -o-linear-gradient(45deg, rgba($light,1) 0%, rgba($dark,1) 100%)
+	background: -ms-linear-gradient(45deg, rgba($light,1) 0%, rgba($dark,1) 100%)
+	background: linear-gradient(45deg, rgba($light,1) 0%, rgba($dark,1) 100%)
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$light, endColorstr=$dark, GradientType=1 )
+	background-repeat: no-repeat
+	background-attachment: fixed
+
+html, body
+	height: 100%
+	font-family: Helvetica, sans-serif
+	@include gradient($light-gradient, $dark-gradient)
+
+body
+	padding: 40px 0
+
+h1
+	font-size: 32px
+
+h2
+	font-size: 22px
+
+.card
+	text-align: center
+	width: 1250px
+	height: 670px
+	margin: 0 auto
+	padding-top: 10px
+	background-color: white
+	border-radius: 10px
+	opacity: 0.90
+	p:first-of-type 
+		margin-top: 5px
+		font-size: 14px
+		display: block
+	.toolTip
+		position: absolute
+		text-align: center
+		width: auto
+		height: auto
+		font-size: 15px
+		padding: 0 5px 3px 5px
+		border-radius: 5px
+		pointer-events: none
+		box-shadow: 3px 3px 6px rgba(#000, 0.2)
+		background-color: lightcoral
+		opacity: 0
+		white-space: nowrap
+		p:first-child
+			font-size: 16px
+		p:last-child
+			font-size: 13px
+			margin-top: 3px
+
+	.chart
+		.axis 
+			font-size: 13px
+		.axis--y path, 
+		.axis--y .tick line 
+			display: none
+		.temp 
+			cursor: pointer
